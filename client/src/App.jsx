@@ -1,14 +1,28 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import Texteditor from './Texteditor.jsx'
+import DocumentView from './Home.jsx'
+import {BrowserRouter, Routes, Route} from 'react-router-dom'
+
+const documents = [
+	{id : 1, title: "test note"},
+	{id : 2, title: "iphone "},
+	{id : 3, title: "new note"},
+	{id : 4, title: "untitled"},
+]
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
-			<Texteditor />
+			<BrowserRouter>
+				<Routes>
+					<Route path="/" element={<DocumentView documents={documents}/>} />
+					<Route path="/texteditor/" >
+						<Route path=":id" element={<Texteditor />} />
+						<Route path="new" element={<Texteditor />} />
+					</Route> 
+				</Routes>
+			</BrowserRouter>
     </>
   )
 }
