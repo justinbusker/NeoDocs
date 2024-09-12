@@ -1,17 +1,25 @@
 {
   "dependencies": {
+    "nodemon": "^3.1.4",
     "socket.io": "^4.7.5"
   },
   "name": "server",
   "version": "1.0.0",
   "main": "index.js",
-  "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-	"devstart": "nodemon server.jsx"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "devstart": "nodemon server.jsx"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "kill-port": "^2.0.1"
+  },
+	"events": {
+		"restart": "kill-port 3001",
+		"crash": "kill-port 30001"
+	},
+	"delay": "1500"
 }

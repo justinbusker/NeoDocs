@@ -1,6 +1,7 @@
 import {Routes, Route, Link} from 'react-router-dom'
-import Texteditor from './Texteditor.jsx'
-import './HomeStyles.css'
+import Texteditor from '../Texteditor.jsx'
+import '../styling/HomeStyles.css'
+import Document from "./Document.jsx"
 export default function DocumentsView({documents}){
 	return(
 		<>
@@ -8,11 +9,7 @@ export default function DocumentsView({documents}){
 				documents.map(document => {
 					const {id, title} = document
 					return (
-						<Link key={id} to={`texteditor/${id}`} >
-							<div className="homeDocument">
-								<p>{title}</p>
-							</div>
-						</Link>
+						<Document id={id} title={title}/>
 					)
 				})
 		}

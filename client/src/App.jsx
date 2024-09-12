@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import Texteditor from './Texteditor.jsx'
-import DocumentView from './Home.jsx'
+import DocumentView from './home/Home.jsx'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 
 const documents = [
