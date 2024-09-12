@@ -1,20 +1,23 @@
 import {Routes, Route, Link} from 'react-router-dom'
+import {useState} from 'react'
 import Texteditor from '../Texteditor.jsx'
 import '../styling/HomeStyles.css'
-import Document from "./Document.jsx"
-export default function DocumentsView({documents}){
+import NewDocument from "./NewDocument.jsx"
+import DocumentsView from "./DocumentView.jsx"
+export default function Home(){
+	
+	const [documents, setDocuments] = useState([])
+
+	function updateDocuments(title){
+		setDocuments((documents) => {
+			return [...documents, {id:crypto.randomUUID(), title}]
+		})
+	}
+
 	return(
 		<>
-				{	
-				documents.map(document => {
-					const {id, title} = document
-					return (
-						<Document id={id} title={title}/>
-					)
-				})
-		}
+			<NewDocument updateDocuments={updateDocuments}/>
+			<DocumentsView documents={documents}/>
 		</>
-		
-
 	)
 }
