@@ -4,16 +4,8 @@ import Texteditor from '../Texteditor.jsx'
 import '../styling/HomeStyles.css'
 import NewDocument from "./NewDocument.jsx"
 import DocumentsView from "./DocumentView.jsx"
-export default function Home(){
+export default function Home({updateDocuments, documents}){
 	
-	const [documents, setDocuments] = useState([])
-
-	function updateDocuments(title){
-		setDocuments((documents) => {
-			return [...documents, {id:crypto.randomUUID(), title}]
-		})
-	}
-
 	return(
 		<>
 			<NewDocument updateDocuments={updateDocuments}/>

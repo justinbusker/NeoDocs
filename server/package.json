@@ -1,14 +1,17 @@
 {
   "dependencies": {
+    "mongodb": "^6.9.0",
+    "mongoose": "^8.6.2",
     "nodemon": "^3.1.4",
     "socket.io": "^4.7.5"
   },
   "name": "server",
   "version": "1.0.0",
   "main": "index.js",
+	"type" : "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "devstart": "nodemon server.jsx"
+    "devstart": "nodemon server.js"
   },
   "keywords": [],
   "author": "",
@@ -16,10 +19,5 @@
   "description": "",
   "devDependencies": {
     "kill-port": "^2.0.1"
-  },
-	"events": {
-		"restart": "kill-port 3001",
-		"crash": "kill-port 30001"
-	},
-	"delay": "1500"
+  }
 }
