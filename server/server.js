@@ -35,6 +35,19 @@ io.on("connection", socket => {
 		socket.emit('pull-documents', documents)
 	})
 
+	socket.on('save-document', async (contents, id) => {
+		const doc = await Document.findOne({id: id})
+		doc.data = contents;
+		await doc.save()
+		console.log(doc.data)
+	})
+
+
+	socket.on('set-document', async (id) => {
+		const doc = await Document.findOne({id: id})
+		socket.emit('get-contents', doc.data)
+	})
+
 })
 
  

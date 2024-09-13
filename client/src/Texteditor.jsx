@@ -2,12 +2,16 @@ import { useCallback, useEffect, useState } from 'react';
 import Quill from 'quill';
 import "quill/dist/quill.snow.css"
 import {io} from 'socket.io-client'
+import {useParams} from 'react-router-dom'
+
 
 
 export default function  Texteditor(){
-
+	const {id} = useParams()
 	const [socket, setSocket] = useState()
 	const [quill, setQuill] = useState()
+	
+	console.log(id)
 	
 
 
@@ -21,18 +25,32 @@ export default function  Texteditor(){
 	}, [])
 
 	useEffect(() => {
+		if (socket ==null || quill == null) return;
+
+			socket.emit('set-document', id)
+	})
+
+	useEffect(() => {
+		if (socket ==null || quill == null) return;
+
+		socket.on('get-contents', data =>{
+			quill.setContents(data)
+		})
+			
+	})
+
+	useEffect(() => {
 		if (socket == null || quill == null) return
 		
-
 		const interval = setInterval(() => {
-			console.log("saved")
-		}, 2000);
+			socket.emit('save-document', quill.getContents(), id)
+		}, 1000);
 		
 		return () => {
 			clearInterval(interval)
 		};
 		
-	}, [quill, socket])
+	}, [id, quill, socket])
 
 	useEffect(() => {
 		if (quill == null) return
