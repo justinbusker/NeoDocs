@@ -1,0 +1,28 @@
+.login-box {
+	background-color: #EBF5FB;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 35vw;
+	height: 15vw;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	border-radius: 25px;
+
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.login-box .title {
+	position: absolute;
+	left: 1%;
+	top: 1%;
+}
+
+.login-box .login-form {
+	color: blue;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}

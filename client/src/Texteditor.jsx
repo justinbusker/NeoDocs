@@ -25,7 +25,7 @@ export default function  Texteditor(){
 	}, [])
 
 	useEffect(() => {
-		if (socket ==null || quill == null) return;
+		if (socket == null || quill == null) return;
 
 			socket.emit('set-document', id)
 	})
@@ -56,8 +56,9 @@ export default function  Texteditor(){
 		if (quill == null) return
 		quill.on('text-change', (delta, oldDelta, source) => {
 			console.log(quill.getContents())
+
 		})
-	}, [quill])
+	}, [quill, socket, id])
 	
 
 	const wrapperRef = useCallback(wrapper => {

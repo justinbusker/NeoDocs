@@ -27,7 +27,6 @@ io.on("connection", socket => {
 		
 	})
 
-
 	socket.on('get-documents', async () =>{
 		const documents = await Document.find()
 		console.log(documents)

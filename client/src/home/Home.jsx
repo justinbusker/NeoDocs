@@ -1,9 +1,9 @@
-import {Routes, Route, Link} from 'react-router-dom'
 import {useState, useEffect} from 'react'
 import Texteditor from '../Texteditor.jsx'
 import '../styling/HomeStyles.css'
 import NewDocument from "./NewDocument.jsx"
 import DocumentsView from "./DocumentView.jsx"
+import Title from './Title'
 import {io} from 'socket.io-client'
 
 export default function Home({}){
@@ -34,7 +34,7 @@ export default function Home({}){
 			setAllDocuments(docs)
 
 		})
-	}, [socket])
+	}, socket)
 
 
 	function setAllDocuments(docs){
@@ -52,6 +52,7 @@ export default function Home({}){
 
 	return(
 		<>
+			<Title />
 			<NewDocument updateDocuments={updateDocuments} />
 			<DocumentsView documents={documents}/>
 		</>
