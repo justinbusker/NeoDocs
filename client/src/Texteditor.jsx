@@ -1,30 +1,19 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useContext, useEffect, useState } from 'react';
 import Quill from 'quill';
 import "quill/dist/quill.snow.css"
-import {io} from 'socket.io-client'
 import {useParams} from 'react-router-dom'
+import {SocketContext} from "./context/socket.js"
 
 
 
 export default function  Texteditor(){
 	const {id} = useParams()
-	const [socket, setSocket] = useState()
 	const [quill, setQuill] = useState()
-	
+	const socket = useContext(SocketContext)
+
 	console.log(id)
 	
-
-
-	useEffect(() => {
-	const socket = io("http://localhost:3001")
-		setSocket(socket)
-
-		return () => {
-			socket.disconnect()
-		}
-	}, [])
-
-	useEffect(() => {
+		useEffect(() => {
 		if (socket == null || quill == null) return;
 
 			socket.emit('set-document', id)

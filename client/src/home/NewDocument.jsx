@@ -1,19 +1,10 @@
-import {useState, useEffect} from 'react'
-import {io} from 'socket.io-client'
+import {useState, useContext,  useEffect} from 'react'
+import {SocketContext} from "../context/socket.js"
 
 export default function NewDocument({updateDocuments}){
 
 	const [title, setTitle] = useState("")
-	const [socket, setSocket] = useState()
-
-	useEffect(() => {
-	const socket = io("http://localhost:3001")
-		setSocket(socket)
-
-		return () => {
-			socket.disconnect()
-		}
-	}, [])
+	const socket = useContext(SocketContext)
 
 	function handleSubmit(e){
 		e.preventDefault()

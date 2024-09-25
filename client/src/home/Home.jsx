@@ -1,24 +1,15 @@
-import {useState, useEffect} from 'react'
+import {useState, useContext, useEffect} from 'react'
 import Texteditor from '../Texteditor.jsx'
 import '../styling/HomeStyles.css'
 import NewDocument from "./NewDocument.jsx"
 import DocumentsView from "./DocumentView.jsx"
 import Title from './Title'
-import {io} from 'socket.io-client'
+import {SocketContext} from "../context/socket.js"
 
 export default function Home({}){
 
-	const [socket, setSocket] = useState()
 	const [documents, setDocuments] = useState([])
-
-	useEffect(() => {
-	const socket = io("http://localhost:3001")
-		setSocket(socket)
-
-		return () => {
-			socket.disconnect()
-		}
-	}, [])
+	const socket = useContext(SocketContext)
 
 	useEffect(() => {
 		if (socket == null) return
@@ -34,7 +25,7 @@ export default function Home({}){
 			setAllDocuments(docs)
 
 		})
-	}, socket)
+	}, [socket])
 
 
 	function setAllDocuments(docs){
