@@ -1,9 +1,13 @@
+import 'dotenv/config'
+console.log(process.env)
 import {Server} from 'socket.io'
 import mongoose from 'mongoose'
 import Document from './Document.js'
 
-const uri = "mongodb+srv://jtbusker:Curbgames25@neodocs.bac4o.mongodb.net/?retryWrites=true&w=majority&appName=NeoDocs";
-mongoose.connect("mongodb+srv://jtbusker:Curbgames25@neodocs.bac4o.mongodb.net/?retryWrites=true&w=majority&appName=NeoDocs")
+const dbUsername = process.env.PRIVATE_USER
+const dbPassword = process.env.PRIVATE_PASSWORD
+
+mongoose.connect(`mongodb+srv://${dbUsername}:${dbPassword}@neodocs.bac4o.mongodb.net/?retryWrites=true&w=majority&appName=NeoDocs`)
 
 const io = new Server(3001, {
 	cors: {
@@ -40,7 +44,6 @@ io.on("connection", socket => {
 		const doc = await Document.findOne({id: id})
 		doc.data = contents;
 		await doc.save()
-		console.log(doc.data)
 	})
 
 
