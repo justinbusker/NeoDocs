@@ -7,10 +7,10 @@ Currently not focusing too much on styling, just proper implementation of what I
 
 ## Some goals:
 
-* Add delete button (done)
 * Search bar
 * implement splitting
 * better styling
+* Add delete button (done)
 * Implement db to create and save files (done)
 * Make Login and Create User page (done)
 * Socket context (done)

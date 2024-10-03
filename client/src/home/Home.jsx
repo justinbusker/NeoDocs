@@ -4,6 +4,7 @@ import NewDocument from "./NewDocument.jsx"
 import DocumentsView from "./DocumentView.jsx"
 import Title from './Title'
 import {SocketContext} from "../context/socket.js"
+import SearchBar from "./Search.jsx"
 
 export default function Home(){
 
@@ -24,7 +25,7 @@ export default function Home(){
 			setAllDocuments(docs)
 
 		})
-	} )
+	})
 
 
 	function setAllDocuments(docs){
@@ -43,6 +44,7 @@ export default function Home(){
 	return(
 		<>
 			<Title />
+			<SearchBar />
 			<NewDocument updateDocuments={updateDocuments} />
 			<DocumentsView documents={documents}/>
 		</>
