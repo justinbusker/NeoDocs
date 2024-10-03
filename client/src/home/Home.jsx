@@ -1,12 +1,11 @@
 import {useState, useContext, useEffect} from 'react'
-import Texteditor from '../Texteditor.jsx'
 import '../styling/HomeStyles.css'
 import NewDocument from "./NewDocument.jsx"
 import DocumentsView from "./DocumentView.jsx"
 import Title from './Title'
 import {SocketContext} from "../context/socket.js"
 
-export default function Home({}){
+export default function Home(){
 
 	const [documents, setDocuments] = useState([])
 	const socket = useContext(SocketContext)
@@ -25,7 +24,7 @@ export default function Home({}){
 			setAllDocuments(docs)
 
 		})
-	}, [socket])
+	} )
 
 
 	function setAllDocuments(docs){

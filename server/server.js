@@ -52,6 +52,11 @@ io.on("connection", socket => {
 		socket.emit('get-contents', doc.data)
 	})
 
+	socket.on('delete-document', async (id) => {
+		Document.deleteOne({id: id}).then((result) => {
+		})
+	})
+
 	//****** USERS ******//
 	socket.on('create-user', async() => {
 		console.log("got socket emission for create user")
