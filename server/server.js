@@ -3,6 +3,7 @@ console.log(process.env)
 import {Server} from 'socket.io'
 import mongoose from 'mongoose'
 import Document from './Document.js'
+import User from './User.js'
 
 const dbUsername = process.env.PRIVATE_USER
 const dbPassword = process.env.PRIVATE_PASSWORD
@@ -58,8 +59,26 @@ io.on("connection", socket => {
 	})
 
 	//****** USERS ******//
-	socket.on('create-user', async() => {
+	socket.on('create-user', async(username, password) => {
 		console.log("got socket emission for create user")
+		const user = new User ({
+			username: username,
+			password: password,
+			documents: []
+		})
+
+		await user.save();
+	})
+
+	socket.on('user-signin', async(username, password)=>{
+		const user = await User.findOne({username: username})
+		if (user) {
+			if (user.password === password) console.log('password correct')
+			console.log(`Found user ${user.username}`)
+		} else {
+			console.log(`Could not find user ${username}`)
+		}
+		console.log("got socket emission for user signin")
 	})
 	
 })

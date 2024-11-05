@@ -12,7 +12,7 @@ const userSchema = new Schema({
 		type: String,
 		required: true,
 	},
-	documents: [Document]
+	documents: []
 })
 
 const User = model('user', userSchema)

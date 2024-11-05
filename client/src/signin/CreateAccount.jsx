@@ -25,7 +25,7 @@ export default function CreateAccount(){
 		setUsername("")
 		setPassword("")
 
-		socket.emit('create-user')
+		socket.emit('create-user', username, password)
 	}
 
 	return (

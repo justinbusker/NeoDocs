@@ -1,16 +1,20 @@
 import "../styling/LoginStyle.css";
-import {useState} from "react";
+import {useState, useContext} from "react";
 import {Link} from 'react-router-dom'
+import {SocketContext} from "../context/socket.js"
 
 
 export default function Login(){
 
 	const [username, setUsername] = useState("")
 	const [password, setPassword] = useState("")
+	const socket = useContext(SocketContext)
 
 	function handleSubmit(e){
 		e.preventDefault()
 		console.log("submitted form")
+
+		socket.emit('user-signin', username, password)
 
 		setUsername("")
 		setPassword("")
