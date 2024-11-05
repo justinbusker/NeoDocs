@@ -34,8 +34,9 @@ io.on("connection", socket => {
 		
 	})
 
-	socket.on('get-documents', async () =>{
-		const documents = await Document.find()
+	socket.on('get-documents', async (searchTerm) =>{
+		const term = searchTerm ? {title: {$regex: new RegExp(searchTerm, 'i')}} : {};
+		const documents = await Document.find(term)
 		console.log(documents)
 
 		socket.emit('pull-documents', documents)
