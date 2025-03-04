@@ -1,4 +1,4 @@
-# <span style="color:navy"> NeoDocs </span>
+# NeoDocs
 An under construction Google Docs-like document editor that allows for NeoVim like searching in documents and tabs
 
 * Made for applying my learning of React, Mongoose, Socket.io.
@@ -14,5 +14,4 @@ Currently not focusing on styling, just proper implementation of what I want the
 * Implement db to create and save files (done)
 * Make Login and Create User page (done)
 * Socket context (done)
-
 * better styling (hahahaha... :|)
