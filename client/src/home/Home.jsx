@@ -40,12 +40,13 @@ export default function Home(){
 		})
 	}
 	
-
 	return(
 		<>
 			<Title />
+			<div className="flex">
 			<SearchBar />
 			<NewDocument updateDocuments={updateDocuments} />
+			</div>
 			<DocumentsView documents={documents}/>
 		</>
 	)

@@ -23,7 +23,7 @@ export default function Document({key, id, title}){
 					<p className="text-lg font-semibold">{title}</p>
 				</div>
 			</Link>
-			<button onClick={() => deleteDocument(id)} className="ml-7 font-bold text-xl text-red-500">X</button>
+			<button onClick={() => deleteDocument(id)} className="cursor-pointer ml-7 font-bold text-xl text-red-500">X</button>
 		</ul>
 	)
 }

@@ -26,8 +26,10 @@ export default function NewDocument({updateDocuments}){
 		<form onSubmit={handleSubmit}>
 		<input value={title} 
 				onChange={e => setTitle(e.target.value)}
+				placeholder="Create a new document"
+				className="border border-gray-300 p-1 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
 				type="text" id="title" />
-		<button>Create</button>
+		<button className="cursor-pointer m-1 border border-gray-300 p-1 rounded">Create</button>
 		</form>
 	)
 }

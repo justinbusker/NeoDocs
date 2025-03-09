@@ -10,9 +10,9 @@ export default function SearchBar(){
 	return(
 		<input type="text" 
 			id="searchterm" 
-			className="border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+			className="border border-gray-300 p-1 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
 			placeholder="Search"
-		onChange = {e => 
+			onChange = {e => 
 				socket.emit('get-documents', e.target.value)
 			}
 		></input>

@@ -3,6 +3,8 @@ import Quill from 'quill';
 import "quill/dist/quill.snow.css"
 import {useParams} from 'react-router-dom'
 import {SocketContext} from "./context/socket.js"
+import Title from './home/Title.jsx'
+
 
 
 
@@ -25,7 +27,6 @@ export default function  Texteditor(){
 		socket.on('get-contents', data =>{
 			quill.setContents(data)
 		})
-			
 	})
 
 	useEffect(() => {
@@ -59,5 +60,5 @@ export default function  Texteditor(){
 		setQuill(q)
 	}, [])
 	
-	return (<div className="editor" ref={wrapperRef}></div>);
+	return (<> <Title /> <button className="cursor-pointer m-1 border border-gray-300 p-1 rounded">H</button><div className="editor" ref={wrapperRef}></div> </>);
 }
